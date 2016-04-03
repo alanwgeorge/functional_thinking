@@ -12,7 +12,7 @@ public class ImpNumberClassifier {
     private int _number;                          //<1>
     private Map<Integer, Integer> _cache;         //<2>
 
-    public ImpNumberClassifier(int targetNumber) {
+    private ImpNumberClassifier(int targetNumber) {
         _number = targetNumber;
         _cache = new HashMap<>();
     }
@@ -50,16 +50,26 @@ public class ImpNumberClassifier {
         }
     }
 
-    public boolean isPerfect() {
+    private boolean isPerfect() {
         return cachedAliquotSum() == _number;
     }
 
-    public boolean isAbundant() {
+    private boolean isAbundant() {
         return cachedAliquotSum() > _number;
     }
 
-    public boolean isDeficient() {
+    private boolean isDeficient() {
         return cachedAliquotSum() < _number;
     }
+
+    public static void main(String[] args) {
+        int number = 44;
+
+        ImpNumberClassifier impNumberClassifier = new ImpNumberClassifier(number);
+        System.out.printf("isPerfect %d %b\n", number, impNumberClassifier.isPerfect());
+        System.out.printf("isAbundant() %d %b\n", number, impNumberClassifier.isAbundant());
+        System.out.printf("isDeficient() %d %b\n", number, impNumberClassifier.isDeficient());
+    }
+
 }
 // END number_classifier_imperative_optimized

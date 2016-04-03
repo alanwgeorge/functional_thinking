@@ -19,7 +19,7 @@ public class Words8 extends Words {
         TreeMap<String, Integer> wordMap = new TreeMap<>();
         List<String> strings = regexToList(words, "\\w+");
 
-        strings.stream()
+        strings.parallelStream()
                 .map(String::toLowerCase)
                 .filter(w -> !NON_WORDS.contains(w))
                 .forEach(w -> wordMap.put(w, wordMap.getOrDefault(w, 0) + 1));

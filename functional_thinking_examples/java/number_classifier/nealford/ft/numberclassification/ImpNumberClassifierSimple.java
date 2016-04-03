@@ -10,16 +10,16 @@ public class ImpNumberClassifierSimple {
     private int _number;                          //<1>
     private Map<Integer, Integer> _cache;         //<2>
 
-    public ImpNumberClassifierSimple(int targetNumber) {
+    private ImpNumberClassifierSimple(int targetNumber) {
       _number = targetNumber;
       _cache = new HashMap<>();
     }
 
-    public boolean isFactor(int potential) {
+    private boolean isFactor(int potential) {
       return _number % potential == 0;
     }
 
-    public Set<Integer> getFactors() {
+    private Set<Integer> getFactors() {
         Set<Integer> factors = new HashSet<>();
         factors.add(1);
         factors.add(_number);
@@ -29,7 +29,7 @@ public class ImpNumberClassifierSimple {
         return factors;
     }
 
-    public int aliquotSum() {                     // <3>
+    private int aliquotSum() {                     // <3>
         if (_cache.get(_number) == null) {
             int sum = 0;
             for (int i : getFactors())
@@ -39,16 +39,25 @@ public class ImpNumberClassifierSimple {
         return _cache.get(_number);
     }
 
-    public boolean isPerfect() {
+    private boolean isPerfect() {
         return aliquotSum() == _number;
     }
 
-    public boolean isAbundant() {
+    private boolean isAbundant() {
         return aliquotSum() > _number;
     }
 
-    public boolean isDeficient() {
+    private boolean isDeficient() {
         return aliquotSum() < _number;
+    }
+
+    public static void main(String[] args) {
+        int number = 44;
+
+        ImpNumberClassifierSimple impNumberClassifierSimple = new ImpNumberClassifierSimple(number);
+        System.out.printf("isPerfect %d %b\n", number, impNumberClassifierSimple.isPerfect());
+        System.out.printf("isAbundant() %d %b\n", number, impNumberClassifierSimple.isAbundant());
+        System.out.printf("isDeficient() %d %b\n", number, impNumberClassifierSimple.isDeficient());
     }
 }
 // END imp_classifier
