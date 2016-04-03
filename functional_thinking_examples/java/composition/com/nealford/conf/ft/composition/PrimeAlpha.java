@@ -1,7 +1,5 @@
 package com.nealford.conf.ft.composition;
 
-import com.sun.tools.javac.util.List;
-
 import java.util.HashSet;
 import java.util.Set;
 

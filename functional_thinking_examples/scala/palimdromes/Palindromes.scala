@@ -1,8 +1,6 @@
 
+object Palindromes {
+  def isPalindrome(x: String) = x == x.reverse
 
-def isPalindrome(x: String) = x == x.reverse
-
-def findPalidrome(s: Seq[String]) = s find isPalindrome
-
-
-
+  def findPalidrome(s: Seq[String]) = s find isPalindrome
+}

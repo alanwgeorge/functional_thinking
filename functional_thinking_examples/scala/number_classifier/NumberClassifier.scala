@@ -1,4 +1,3 @@
-package main.scala
 
 // BEGIN Number_Classifier_Scala
 object NumberClassifier {
